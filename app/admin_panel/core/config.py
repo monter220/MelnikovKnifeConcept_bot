@@ -1,25 +1,20 @@
-from pydantic import BaseSettings
+import os
 
+from dotenv import load_dotenv, find_dotenv
 
-class Settings(BaseSettings):
-    app_author: str
-    app_title: str
-    app_doc_url: str = 'documentations'
-    db_url: str = 'mongodb://localhost:27017/test_db'
-    path: str
-    secret: str
-    admin: str
-    password: str
-    timezone: str = 'Europe/Moscow'
-    api_version: str = 'v1'
-    help_text_for_image: str = 'Название файла должно содержать только латиницу и цифры'
-    max_len_nickname: int = 100
-    max_len_knifename: int = 100
-    pattern: str = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,}$'  # noqa
+load_dotenv(find_dotenv())
 
-
-    class Config:
-        env_file = '.env'
-
-
-settings = Settings()
+DB_URL = os.getenv('DB_URL', default='mongodb://localhost:27017/test_db')
+APP_AUTHOR = os.getenv('APP_AUTHOR')
+APP_TITLE = os.getenv('APP_TITLE', default='MelnikovKnifeConcept')
+APP_DOC_URL = os.getenv('APP_DOC_URL', default='/documentations')
+SECRET = os.getenv('SECRET')
+ADMIN = os.getenv('ADMIN')
+PASSWORD = os.getenv('PASSWORD')
+APP_ADMIN_PANEL_URL = os.getenv('APP_ADMIN_PANEL_URL', default='/admin')
+HELP_TEXT_FOR_IMAGE = os.getenv('HELP_TEXT_FOR_IMAGE', default='Oops')
+MAX_LEN_NICKNAME = os.getenv('MAX_LEN_NICKNAME', default=100)
+MAX_LEN_KNIFENAME = os.getenv('MAX_LEN_KNIFENAME', default=100)
+TIMEZONE = os.getenv('TIMEZONE', default='Europe/Moscow')
+API_VERSION = os.getenv('API_VERSION')
+PATTERN: str = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,}$'  # noqa

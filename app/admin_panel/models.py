@@ -3,7 +3,7 @@ from enum import Enum
 
 import mongoengine as db
 
-from .core.config import settings
+from .core.config import HELP_TEXT_FOR_IMAGE, MAX_LEN_KNIFENAME, MAX_LEN_NICKNAME
 
 
 class User(db.Document):
@@ -17,7 +17,7 @@ class TGUser(db.Document):
     """Модель пользователей бота"""
     tg_id = db.IntField(required=True, unique=True)
     nickname = db.StringField(
-        max_length=settings.max_len_nickname, required=True, unique=True)
+        max_length=MAX_LEN_NICKNAME, required=True, unique=True)
     gdpr = db.BooleanField(default=False)
     active = db.BooleanField(default=True)
 
@@ -35,7 +35,7 @@ class DefaultMessage(db.Document):
     """Модель базовых сообщений"""
     text = db.StringField(required=True)
     active = db.BooleanField(default=True)
-    image = db.ImageField(help_text=settings.help_text_for_image)
+    image = db.ImageField(help_text=HELP_TEXT_FOR_IMAGE)
     type = db.StringField(
         required=True,
         choices=[item.value for item in TypeMessage]
@@ -46,15 +46,15 @@ class Message(db.Document):
     """Модель информационных сообщений"""
     text = db.StringField(required=True)
     datetime = db.DateTimeField(default=datetime.now())
-    image = db.ImageField(help_text=settings.help_text_for_image)
+    image = db.ImageField(help_text=HELP_TEXT_FOR_IMAGE)
 
 
 class Knife(db.Document):
     """Модель ножей"""
     name = db.StringField(
-        max_length=settings.max_len_knifename, required=True, unique=True)
+        max_length=MAX_LEN_KNIFENAME, required=True, unique=True)
     desc = db.StringField(required=True)
     previewphoto = db.ImageField(
-        help_text=settings.help_text_for_image, required=True)
+        help_text=HELP_TEXT_FOR_IMAGE, required=True)
     photo = db.ImageField(
-        help_text=settings.help_text_for_image, required=True)
+        help_text=HELP_TEXT_FOR_IMAGE, required=True)
