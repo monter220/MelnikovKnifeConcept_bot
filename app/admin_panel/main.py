@@ -8,8 +8,8 @@ from .utils.auth import MyAuthProvider, pwd_context
 from starlette_admin.i18n import I18nConfig
 from mongoengine import connect, disconnect
 
-from app.admin_panel.models import User, DefaultMessage, TGUser, Knife
-from .views import UserView, TGUserView
+from app.admin_panel.models import User, DefaultMessage, TGUser, Knife, Message
+from .views import UserView, TGUserView, DefaultMessageView, MessageView
 from .core.config import DB_URL, ADMIN, PASSWORD, APP_TITLE, APP_DOC_URL, APP_ADMIN_PANEL_URL, SECRET
 
 
@@ -45,10 +45,10 @@ admin = Admin(
 
 admin.add_view(UserView(User))
 # admin.add_view(ChatView(Chat))
-# admin.add_view(DefaultMessageView(DefaultMessage))
+admin.add_view(DefaultMessageView(DefaultMessage))
 admin.add_view(TGUserView(TGUser))
 # admin.add_view(EventView(Event))
-# admin.add_view(DelayedMessageView(DelayedMessage))
+admin.add_view(MessageView(Message))
 
 admin.mount_to(app)
 

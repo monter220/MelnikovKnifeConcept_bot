@@ -95,3 +95,4 @@ class Knife(db.Document):
     features = db.StringField()
     pretentious_quote = db.StringField(
         max_length=MAX_LEN_KNIFEQUOTE, required=True, unique=True)
+    active = db.BooleanField(default=True)
