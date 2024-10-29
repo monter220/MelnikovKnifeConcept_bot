@@ -3,7 +3,17 @@ from enum import Enum
 
 import mongoengine as db
 
-from .core.config import HELP_TEXT_FOR_IMAGE, MAX_LEN_KNIFENAME, MAX_LEN_NICKNAME
+from .core.config import (
+    HELP_TEXT_FOR_IMAGE,
+    MAX_LEN_KNIFENAME,
+    MAX_LEN_NICKNAME,
+    MAX_LEN_KNIFEQUOTE,
+    MIN_KNIFE_VAL,
+    MAX_KNIFE_VAL,
+    MAX_KNIFE_THICKNESS,
+    HELP_TEXT_FOR_KNIFE_LENGTH,
+    HELP_TEXT_FOR_KNIFE_WEIGHT,
+)
 
 
 class User(db.Document):
@@ -58,3 +68,30 @@ class Knife(db.Document):
         help_text=HELP_TEXT_FOR_IMAGE, required=True)
     photo = db.ImageField(
         help_text=HELP_TEXT_FOR_IMAGE, required=True)
+    weight = db.IntField(
+        required=True,
+        min_value=MIN_KNIFE_VAL,
+        max_value=MAX_KNIFE_VAL,
+        help_text=HELP_TEXT_FOR_KNIFE_WEIGHT,
+    )
+    length = db.IntField(
+        required=True,
+        min_value=MIN_KNIFE_VAL,
+        max_value=MAX_KNIFE_VAL,
+        help_text=HELP_TEXT_FOR_KNIFE_LENGTH,
+    )
+    width = db.IntField(
+        required=True,
+        min_value=MIN_KNIFE_VAL,
+        max_value=MAX_KNIFE_VAL,
+        help_text=HELP_TEXT_FOR_KNIFE_LENGTH,
+    )
+    thickness = db.IntField(
+        required=True,
+        min_value=MIN_KNIFE_VAL,
+        max_value=MAX_KNIFE_THICKNESS,
+        help_text=HELP_TEXT_FOR_KNIFE_LENGTH,
+    )
+    features = db.StringField()
+    pretentious_quote = db.StringField(
+        max_length=MAX_LEN_KNIFEQUOTE, required=True, unique=True)
