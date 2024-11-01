@@ -7,10 +7,7 @@ from starlette_admin.fields import (
     PasswordField,
     StringField,
     BooleanField,
-    EnumField,
-    TextAreaField,
     IntegerField,
-    DateTimeField,
 )
 
 from app.admin_panel.models import User, TGUser

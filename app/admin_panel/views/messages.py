@@ -1,11 +1,8 @@
 from starlette_admin.contrib.mongoengine import ModelView
 from starlette_admin.fields import (
-    PasswordField,
-    StringField,
     BooleanField,
     EnumField,
     TextAreaField,
-    IntegerField,
     DateTimeField,
 )
 
