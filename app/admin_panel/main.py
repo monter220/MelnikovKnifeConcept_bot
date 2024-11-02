@@ -8,6 +8,7 @@ from .utils.auth import MyAuthProvider, pwd_context
 from starlette_admin.i18n import I18nConfig
 from mongoengine import connect, disconnect
 
+from app.admin_panel.api.routers import api_router
 from app.admin_panel.models import User, DefaultMessage, TGUser, Knife, Message
 from .views import UserView, TGUserView, DefaultMessageView, MessageView, KnifeView
 from .core.config import DB_URL, ADMIN, PASSWORD, APP_TITLE, APP_DOC_URL, APP_ADMIN_PANEL_URL, SECRET
@@ -32,7 +33,7 @@ app = FastAPI(
     docs_url=APP_DOC_URL,
     redoc_url=None,
 )
-
+app.include_router(api_router)
 
 admin = Admin(
     title=APP_TITLE,
