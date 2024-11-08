@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from .endpoints import tgusers_router, messages_router
+from .endpoints import tgusers_router, messages_router, knifes_router
 from app.admin_panel.core.config import API_VERSION
 
 
@@ -11,12 +11,6 @@ api_router.include_router(tgusers_router,
 api_router.include_router(messages_router,
                           prefix='/messages',
                           tags=('Базовые сообщения',))
-# api_router.include_router(delayed_messages_router,
-#                           prefix='/delayed-messages',
-#                           tags=('Отложенные сообщения',))
-# api_router.include_router(events_router,
-#                           prefix='/events',
-#                           tags=('Мероприятия',))
-# api_router.include_router(chats_router,
-#                           prefix='/chats',
-#                           tags=('Чаты выпускников',))
+api_router.include_router(knifes_router,
+                          prefix='/knifes',
+                          tags=('Ножи',))
