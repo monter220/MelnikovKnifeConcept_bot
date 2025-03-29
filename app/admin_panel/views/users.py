@@ -10,9 +10,9 @@ from starlette_admin.fields import (
     IntegerField,
 )
 
-from app.admin_panel.models import User, TGUser
-from app.admin_panel.utils.auth import pwd_context
-from app.admin_panel.core.config import PATTERN
+from models import User, TGUser
+from utils import pwd_context
+from core.config import PATTERN
 
 
 class UserView(ModelView):

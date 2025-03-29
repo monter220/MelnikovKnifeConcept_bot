@@ -11,7 +11,7 @@ from starlette_admin.fields import (
     DateTimeField,
 )
 
-from app.admin_panel.models import Knife
+from models import Knife
 # from settings import PATTERN
 
 

@@ -3,8 +3,8 @@ from pydantic import BaseModel, Field
 
 class PreviewKnifeList(BaseModel):
     name: str = Field(..., description='Название ножа')
-    previewphoto: str = Field(
-        None, description='Предпросмотровое изображение ножа')
+    # previewphoto: str = Field(
+    #     None, description='Предпросмотровое изображение ножа')
 
 
 class KnifeBase(BaseModel):

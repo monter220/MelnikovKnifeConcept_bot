@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
 from .endpoints import tgusers_router, messages_router, knifes_router
-from app.admin_panel.core.config import API_VERSION
+from core.config import API_VERSION
 
 
 api_router = APIRouter(prefix=f'/api/{API_VERSION}')

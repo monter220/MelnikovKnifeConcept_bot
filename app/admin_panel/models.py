@@ -3,7 +3,7 @@ from enum import Enum
 
 import mongoengine as db
 
-from .core.config import (
+from core.config import (
     HELP_TEXT_FOR_IMAGE,
     MAX_LEN_KNIFENAME,
     MAX_LEN_NICKNAME,
@@ -26,8 +26,7 @@ class User(db.Document):
 class TGUser(db.Document):
     """Модель пользователей бота"""
     tg_id = db.IntField(required=True, unique=True)
-    nickname = db.StringField(
-        max_length=MAX_LEN_NICKNAME, required=True, unique=True)
+    nickname = db.StringField(required=True, unique=True)
     gdpr = db.BooleanField(default=False)
     active = db.BooleanField(default=True)
 
@@ -39,6 +38,7 @@ class TypeMessage(Enum):
     CONTACT_ADMIN = 'contact_admin', 'Контакт администратора'
     UNKNOWN_COMMAND = 'unknown_command', 'Отбивка неизвестной команды'
     ABOUT = 'about', 'Описание бота'
+    KNIFE = 'knife', 'Описание ножей'
 
 
 class DefaultMessage(db.Document):
@@ -62,7 +62,8 @@ class Message(db.Document):
 class Knife(db.Document):
     """Модель ножей"""
     name = db.StringField(
-        max_length=MAX_LEN_KNIFENAME, required=True, unique=True)
+        # max_length=MAX_LEN_KNIFENAME,
+        required=True, unique=True)
     desc = db.StringField(required=True)
     previewphoto = db.ImageField(
         help_text=HELP_TEXT_FOR_IMAGE, required=True)
@@ -70,29 +71,30 @@ class Knife(db.Document):
         help_text=HELP_TEXT_FOR_IMAGE, required=True)
     weight = db.IntField(
         required=True,
-        min_value=MIN_KNIFE_VAL,
-        max_value=MAX_KNIFE_VAL,
+        # min_value=MIN_KNIFE_VAL,
+        # max_value=MAX_KNIFE_VAL,
         help_text=HELP_TEXT_FOR_KNIFE_WEIGHT,
     )
     length = db.IntField(
         required=True,
-        min_value=MIN_KNIFE_VAL,
-        max_value=MAX_KNIFE_VAL,
+        # min_value=MIN_KNIFE_VAL,
+        # max_value=MAX_KNIFE_VAL,
         help_text=HELP_TEXT_FOR_KNIFE_LENGTH,
     )
     width = db.IntField(
         required=True,
-        min_value=MIN_KNIFE_VAL,
-        max_value=MAX_KNIFE_VAL,
+        # min_value=MIN_KNIFE_VAL,
+        # max_value=MAX_KNIFE_VAL,
         help_text=HELP_TEXT_FOR_KNIFE_LENGTH,
     )
     thickness = db.IntField(
         required=True,
-        min_value=MIN_KNIFE_VAL,
-        max_value=MAX_KNIFE_THICKNESS,
+        # min_value=MIN_KNIFE_VAL,
+        # max_value=MAX_KNIFE_THICKNESS,
         help_text=HELP_TEXT_FOR_KNIFE_LENGTH,
     )
     features = db.StringField()
     pretentious_quote = db.StringField(
-        max_length=MAX_LEN_KNIFEQUOTE, required=True, unique=True)
+        # max_length=MAX_LEN_KNIFEQUOTE,
+        required=True, unique=True)
     active = db.BooleanField(default=True)

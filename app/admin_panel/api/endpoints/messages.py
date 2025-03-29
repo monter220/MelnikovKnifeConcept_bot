@@ -3,8 +3,8 @@ from http import HTTPStatus
 
 from fastapi import APIRouter, HTTPException
 
-from app.admin_panel.models import DefaultMessage
-from app.admin_panel.schemas import DefaultMessageBase
+from models import DefaultMessage
+from schemas import DefaultMessageBase
 
 
 router = APIRouter()

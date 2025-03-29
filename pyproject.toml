@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "melnikovbot"
+version = "0.0.0"
+description = ""
+authors = ["Belikov Dmitriy"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+python-dotenv = "^1.0.1"
+fastapi = "^0.112.0"
+aiogram = "^3.10.0"
+starlette-admin = {extras = ["i18n"], version = "^0.14.1"}
+uvicorn = "^0.30.5"
+mongoengine = "^0.28.2"
+motor = "^3.5.1"
+passlib = "^1.7.4"
+itsdangerous = "^2.2.0"
+taskipy = "^1.13.0"
+bcrypt = "4.0.1"
+pillow = "10.4.0"
+pydantic-settings = "^2.4.0"
+celery = {extras = ["redis"], version = "^5.4.0"}
+pytz = "^2024.1"
+pymongo = "<4.9"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.taskipy.tasks]
+startdb = "docker compose -f infra/docker-compose-only-db.yml up -d"
+start_fastapi = "python app/admin_panel/main.py"
+start_bot = "python app/bot/main.py"

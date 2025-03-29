@@ -6,7 +6,7 @@ from starlette_admin.fields import (
     DateTimeField,
 )
 
-from app.admin_panel.models import DefaultMessage, Message, TypeMessage
+from models import DefaultMessage, Message, TypeMessage
 
 
 class DefaultMessageView(ModelView):

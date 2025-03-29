@@ -2,7 +2,7 @@ from starlette.requests import Request
 from starlette.responses import Response
 from starlette_admin.auth import AuthProvider
 from starlette_admin.exceptions import LoginFailed
-from app.admin_panel.models import User
+from models import User
 from passlib.context import CryptContext
 
 

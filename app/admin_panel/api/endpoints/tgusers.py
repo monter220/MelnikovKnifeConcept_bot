@@ -3,8 +3,8 @@ from typing import List
 
 from fastapi import APIRouter, HTTPException
 
-from app.admin_panel.models import TGUser
-from app.admin_panel.schemas import TGUserBase, TGUsersList
+from models import TGUser
+from schemas import TGUserBase, TGUsersList
 
 
 router = APIRouter()
