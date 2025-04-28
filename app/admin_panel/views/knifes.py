@@ -2,17 +2,13 @@ from starlette_admin.contrib.mongoengine import ModelView
 from starlette_admin.exceptions import FormValidationError
 from mongoengine.errors import NotUniqueError
 from starlette_admin.fields import (
-    PasswordField,
     StringField,
     BooleanField,
-    EnumField,
     TextAreaField,
     IntegerField,
-    DateTimeField,
 )
 
 from models import Knife
-# from settings import PATTERN
 
 
 class KnifeView(ModelView):
@@ -24,7 +20,7 @@ class KnifeView(ModelView):
             help_text='Укажите уникальное название ножа',
         ),
         TextAreaField('desc', label='Описание ножа'),
-        Knife.previewphoto,
+        # Knife.previewphoto,
         Knife.photo,
         IntegerField('weight', label='Вес ножа в граммах'),
         IntegerField('length', label='Длина ножа в миллиметрах'),

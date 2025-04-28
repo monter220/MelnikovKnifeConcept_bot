@@ -10,6 +10,7 @@ class BotConfig(BaseModel):
     parse_mode: str = ParseMode.HTML
     fastapi_url: str
     debug: bool = False
+    celery_broker: str
 
 
 class Settings(BaseSettings):

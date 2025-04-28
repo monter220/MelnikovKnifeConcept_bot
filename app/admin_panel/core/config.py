@@ -12,6 +12,8 @@ SECRET = os.getenv('SECRET')
 ADMIN = os.getenv('ADMIN')
 PASSWORD = os.getenv('PASSWORD')
 APP_ADMIN_PANEL_URL = os.getenv('APP_ADMIN_PANEL_URL', default='/admin')
+TIMEZONE = os.getenv('TIMEZONE', default='Europe/Moscow')
+CELERY_BROKER = os.getenv('CELERY_BROKER', default='redis://redis:6379/0')
 
 HELP_TEXT_FOR_IMAGE = os.getenv('HELP_TEXT_FOR_IMAGE', default='Oops')
 HELP_TEXT_FOR_KNIFE_WEIGHT = os.getenv(

@@ -40,19 +40,3 @@ async def get_tg_user(knife_id: str):
 @router.get('/', response_model=Optional[List[PreviewKnifeList]])
 async def get_tg_users():
     return Knife.objects(active=True)
-    # response = []
-    # knifes = Knife.objects(active=True).all()
-    # if knifes:
-    #     for knife in knifes:
-    #         image = knife.previewphoto.read()
-    #         if image:
-    #             image_base64 = base64.b64encode(image).decode('utf-8')
-    #         else:
-    #             image_base64 = None
-    #         response_data = {
-    #             'id': knife.id,
-    #             'name': knife.name,
-    #             'previewphoto': image_base64,
-    #         }
-    #         response.append(response_data)
-    #     return response

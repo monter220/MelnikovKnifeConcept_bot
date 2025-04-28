@@ -133,3 +133,19 @@ async def get_single_knife(knife_id):
         settings.bot.fastapi_url + f'knifes/{knife_id}/', 'GET')
     return knife
 
+
+async def get_delayed_message(message_id):
+    """Получает отложенное сообщение по id."""
+    delayed_message = await async_session(
+        settings.bot.fastapi_url + f'delayed_messages/{message_id}/', 'GET')
+    return delayed_message
+
+
+async def patch_status_delayed_message(message_id, status):
+    """Меняет статус сообщения после успешной оправки."""
+    delayed_message = await async_session(
+        settings.bot.fastapi_url + f'delayed_messages/{message_id}/status/',
+        'PATCH',
+        {'status': status}
+    )
+    return delayed_message

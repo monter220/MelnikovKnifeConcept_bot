@@ -26,7 +26,11 @@ class User(db.Document):
 class TGUser(db.Document):
     """Модель пользователей бота"""
     tg_id = db.IntField(required=True, unique=True)
-    nickname = db.StringField(required=True, unique=True)
+    nickname = db.StringField(
+        required=True,
+        unique=True,
+        max_length=MAX_LEN_NICKNAME
+    )
     gdpr = db.BooleanField(default=False)
     active = db.BooleanField(default=True)
 
@@ -57,16 +61,18 @@ class Message(db.Document):
     text = db.StringField(required=True)
     datetime = db.DateTimeField(default=datetime.now())
     image = db.ImageField(help_text=HELP_TEXT_FOR_IMAGE)
+    id_celery = db.StringField()
+    status = db.BooleanField(default=False)
 
 
 class Knife(db.Document):
     """Модель ножей"""
     name = db.StringField(
-        # max_length=MAX_LEN_KNIFENAME,
+        max_length=MAX_LEN_KNIFENAME,
         required=True, unique=True)
     desc = db.StringField(required=True)
-    previewphoto = db.ImageField(
-        help_text=HELP_TEXT_FOR_IMAGE, required=True)
+    # previewphoto = db.ImageField(
+    #     help_text=HELP_TEXT_FOR_IMAGE, required=True)
     photo = db.ImageField(
         help_text=HELP_TEXT_FOR_IMAGE, required=True)
     weight = db.IntField(
@@ -95,6 +101,6 @@ class Knife(db.Document):
     )
     features = db.StringField()
     pretentious_quote = db.StringField(
-        # max_length=MAX_LEN_KNIFEQUOTE,
+        max_length=MAX_LEN_KNIFEQUOTE,
         required=True, unique=True)
     active = db.BooleanField(default=True)
